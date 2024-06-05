@@ -9,7 +9,7 @@ import (
 )
 
 var infoLog = log.New(os.Stdout, "[INFO] ", log.LstdFlags)
-var errorLog = log.New(os.Stderr, "[ERR] ", log.LstdFlags)
+var erroLog = log.New(os.Stderr, "[ERRO] ", log.LstdFlags)
 var port = os.Getenv("PORT")
 
 func main() {
@@ -21,7 +21,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	infoLog.Printf("%s %s", r.Method, r.RequestURI)
 	data, err := io.ReadAll(r.Body)
 	if err != nil {
-		errorLog.Println(err)
+		erroLog.Println(err)
 	} else {
 		infoLog.Println(string(data))
 	}
